@@ -73,3 +73,33 @@ if ARGV.include? 'test'
 
 end
 
+##### VIEWS ######
+__END__
+
+@@layout
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>
+      <a href='/''>Caesar Cipher</a>
+    </h1>
+    <%= yield %>
+  </body>
+</html>
+@@form
+  <form action='/' method='POST'>
+    <textarea rows=4 cols=50 name='plaintext'>Enter plaintext</textarea>
+    <input type='number' name='shift' value=1 min=1 max=26>
+    <input type='submit' value='Encrypt'>
+  </form>
+
+@@result
+  <p>Plaintext:</p>
+  <p><%= @plaintext %></p>
+  <p>Ciphertext:</p>
+  <p><%= @ciphertext %></p>
+  <a href='/''>Write another message</a>
